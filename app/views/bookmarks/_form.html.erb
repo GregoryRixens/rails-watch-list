@@ -1,0 +1,7 @@
+<% @bookmark ||= @list.bookmarks.build %>
+
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.collection_select :movie_id, Movie.all, :id, :title, label: 'Select a Movie' %>
+  <%= f.input :comment %>
+  <%= f.button :submit %>
+<% end %>

@@ -1,0 +1,7 @@
+<!-- app/views/bookmarks/show.html.erb -->
+<h1><%= @bookmark.comment %></h1>
+<p>Movie: <%= @bookmark.movie.title %></p>
+<p>List: <%= @bookmark.list.name %></p>
+
+<%= link_to 'Back', list_path(@bookmark.list) %>
+<%= link_to 'Remove Bookmark', list_bookmark_path(@bookmark.list, @bookmark), method: :delete, data: { confirm: 'Are you sure?' } %>

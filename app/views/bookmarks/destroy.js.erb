@@ -1,0 +1,5 @@
+// app/views/bookmarks/destroy.js.erb
+// Cette vue sera appelée après la suppression via AJAX
+
+// Vous pouvez ajouter ici du code JavaScript pour mettre à jour la page, par exemple en supprimant le bookmark de la liste
+$('#<%= dom_id(@bookmark) %>').remove();

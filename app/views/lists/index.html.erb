@@ -1,0 +1,16 @@
+<!-- app/views/lists/index.html.erb -->
+
+<h1>All Lists</h1>
+
+<ul>
+  <% @lists.each do |list| %>
+    <li>
+      <%= link_to list.name, list_path(list) %>
+      <%= form_for(list, url: list_path(list), method: :delete, data: { confirm: 'Are you sure?' }) do |f| %>
+        <%= f.submit 'Delete', class: 'delete-list-button' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New List', new_list_path %>

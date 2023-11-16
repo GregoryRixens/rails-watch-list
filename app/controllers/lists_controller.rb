@@ -1,16 +1,20 @@
-class ApplicationController < ActionController::Base
-  before_action :set_list, only: [:show]
-
+class ListsController < ApplicationController
   def index
     @lists = List.all
   end
 
   def show
-    # @list is already set by the before_action
+    @list = List.find(params[:id])
   end
 
   def new
     @list = List.new
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to lists_path, notice: 'List was successfully destroyed.'
   end
 
   def create
@@ -23,10 +27,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def set_list
-    @list = List.find(params[:id])
-  end
 
   def list_params
     params.require(:list).permit(:name)
